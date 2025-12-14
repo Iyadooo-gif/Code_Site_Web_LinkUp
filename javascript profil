@@ -1,0 +1,302 @@
+// ======================================
+// LINKUP - FICHIER JAVASCRIPT COMPLET
+// Fichier: script.js
+// ======================================
+
+// ===== VARIABLES GLOBALES =====
+let userData = {};
+let activitiesData = [];
+let notificationsData = {};
+
+// ===== INITIALISATION =====
+function init() {
+    loadUserData();
+    loadActivities();
+    loadNotifications();
+    setupEventListeners();
+}
+
+// ===== CHARGER LES DONNÉES UTILISATEUR =====
+async function loadUserData() {
+    try {
+        const response = await fetch('get_user.php');
+        userData = await response.json();
+        
+        document.getElementById('userName').textContent = userData.name;
+        document.getElementById('userEmail').textContent = userData.email;
+    } catch (error) {
+        console.error('Erreur chargement user:', error);
+        showToast('Erreur de connexion', 'error');
+    }
+}
+
+// ===== CHARGER LES ACTIVITÉS =====
+async function loadActivities() {
+    try {
+        const response = await fetch('get_activities.php');
+        activitiesData = await response.json();
+        
+        const registered = activitiesData.filter(a => a.status === 'registered');
+        const waiting = activitiesData.filter(a => a.status === 'waiting');
+
+        document.getElementById('registeredActivities').innerHTML = registered.map(activity => `
+            <div class="activity-card">
+                <div class="activity-image" style="background: ${activity.gradient};">
+                    <span class="activity-status">Registered</span>
+                </div>
+                <div class="activity-content">
+                    <h3 class="activity-title">${activity.title}</h3>
+                    <p class="activity-info"><strong>Date:</strong> ${activity.date}</p>
+                    <p class="activity-info"><strong>Location:</strong> ${activity.location}</p>
+                    <button class="view-details-btn">View Details</button>
+                </div>
+            </div>
+        `).join('');
+
+        document.getElementById('waitingActivities').innerHTML = waiting.map(activity => `
+            <div class="activity-card">
+                <div class="activity-image" style="background: ${activity.gradient};">
+                    <span class="activity-status">Waiting List</span>
+                </div>
+                <div class="activity-content">
+                    <h3 class="activity-title">${activity.title}</h3>
+                    <p class="activity-info"><strong>Date:</strong> ${activity.date}</p>
+                    <p class="activity-info"><strong>Location:</strong> ${activity.location}</p>
+                    <button class="view-details-btn">Check Status</button>
+                </div>
+            </div>
+        `).join('');
+    } catch (error) {
+        console.error('Erreur chargement activités:', error);
+        showToast('Erreur de connexion', 'error');
+    }
+}
+
+// ===== CHARGER LES NOTIFICATIONS =====
+async function loadNotifications() {
+    try {
+        const response = await fetch('get_notifications.php');
+        notificationsData = await response.json();
+        
+        document.getElementById('emailToggle').checked = notificationsData.email;
+        document.getElementById('pushToggle').checked = notificationsData.push;
+    } catch (error) {
+        console.error('Erreur chargement notifications:', error);
+        showToast('Erreur de connexion', 'error');
+    }
+}
+
+// ===== SETUP EVENT LISTENERS =====
+function setupEventListeners() {
+    document.getElementById('emailToggle').addEventListener('change', function() {
+        updateNotification('email', this.checked);
+    });
+
+    document.getElementById('pushToggle').addEventListener('change', function() {
+        updateNotification('push', this.checked);
+    });
+
+    document.getElementById('editForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        handleEditProfile();
+    });
+
+    document.getElementById('passwordForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        handleChangePassword();
+    });
+
+    document.querySelectorAll('.modal').forEach(modal => {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal(modal.id);
+            }
+        });
+    });
+}
+
+// ===== METTRE À JOUR LES NOTIFICATIONS =====
+async function updateNotification(type, enabled) {
+    try {
+        const response = await fetch('update_notifications.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ type, enabled })
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            notificationsData[type] = enabled;
+            showToast((type === 'email' ? 'Email' : 'Push') + ' notifications ' + (enabled ? 'activées' : 'désactivées'), 'success');
+        } else {
+            showToast(result.message, 'error');
+        }
+    } catch (error) {
+        console.error('Erreur:', error);
+        showToast('Erreur de connexion', 'error');
+    }
+}
+
+// ===== OUVRIR MODAL EDIT PROFILE =====
+function openEditModal() {
+    document.getElementById('editName').value = userData.name;
+    document.getElementById('editEmail').value = userData.email;
+    document.getElementById('editModal').classList.add('active');
+}
+
+// ===== OUVRIR MODAL CHANGE PASSWORD =====
+function openPasswordModal() {
+    document.getElementById('passwordModal').classList.add('active');
+    document.getElementById('passwordForm').reset();
+}
+
+// ===== FERMER MODAL =====
+function closeModal(modalId) {
+    document.getElementById(modalId).classList.remove('active');
+}
+
+// ===== GÉRER EDIT PROFILE =====
+async function handleEditProfile() {
+    const name = document.getElementById('editName').value.trim();
+    const email = document.getElementById('editEmail').value.trim();
+    
+    if (!name || !email) {
+        showToast('Tous les champs sont requis', 'error');
+        return;
+    }
+    
+    if (!email.includes('@') || !email.includes('.')) {
+        showToast('Email invalide', 'error');
+        return;
+    }
+    
+    try {
+        const response = await fetch('update_profile.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email })
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            userData = result.data;
+            document.getElementById('userName').textContent = name;
+            document.getElementById('userEmail').textContent = email;
+            closeModal('editModal');
+            showToast('Profil mis à jour avec succès', 'success');
+        } else {
+            showToast(result.message, 'error');
+        }
+    } catch (error) {
+        console.error('Erreur:', error);
+        showToast('Erreur de connexion', 'error');
+    }
+}
+
+// ===== GÉRER CHANGE PASSWORD =====
+async function handleChangePassword() {
+    const current = document.getElementById('currentPassword').value;
+    const newPassword = document.getElementById('newPassword').value;
+    const confirm = document.getElementById('confirmPassword').value;
+    
+    if (!current || !newPassword || !confirm) {
+        showToast('Tous les champs sont requis', 'error');
+        return;
+    }
+    
+    if (newPassword.length < 8) {
+        showToast('Le mot de passe doit contenir au moins 8 caractères', 'error');
+        return;
+    }
+    
+    if (newPassword !== confirm) {
+        showToast('Les mots de passe ne correspondent pas', 'error');
+        return;
+    }
+    
+    try {
+        const response = await fetch('change_password.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ current, newPassword })
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            closeModal('passwordModal');
+            showToast('Mot de passe modifié avec succès', 'success');
+            document.getElementById('passwordForm').reset();
+        } else {
+            showToast(result.message, 'error');
+        }
+    } catch (error) {
+        console.error('Erreur:', error);
+        showToast('Erreur de connexion', 'error');
+    }
+}
+
+// ===== TÉLÉCHARGER LES DONNÉES =====
+function downloadData() {
+    if (!confirm('Voulez-vous télécharger toutes vos données ?')) {
+        return;
+    }
+    
+    window.location.href = 'download_data.php';
+    showToast('Téléchargement en cours...', 'info');
+}
+
+// ===== SUPPRIMER LE COMPTE =====
+async function deleteAccount() {
+    if (!confirm('⚠️ ATTENTION: Êtes-vous sûr de vouloir supprimer votre compte ?\n\nCette action est IRRÉVERSIBLE et supprimera:\n- Votre profil\n- Toutes vos activités\n- Toutes vos inscriptions\n- Toutes vos données')) {
+        return;
+    }
+    
+    if (!confirm('Dernière confirmation: Voulez-vous vraiment supprimer définitivement votre compte ?')) {
+        return;
+    }
+    
+    try {
+        const response = await fetch('delete_account.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            showToast('Compte supprimé avec succès', 'success');
+            setTimeout(() => {
+                alert('Vous allez être redirigé vers la page d\'accueil');
+                window.location.href = 'index.html';
+            }, 2000);
+        } else {
+            showToast(result.message, 'error');
+        }
+    } catch (error) {
+        console.error('Erreur:', error);
+        showToast('Erreur de connexion', 'error');
+    }
+}
+
+// ===== AFFICHER TOAST NOTIFICATION =====
+function showToast(message, type = 'info') {
+    const toast = document.createElement('div');
+    toast.className = 'toast ' + type;
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+}
+
+// ===== DÉMARRER L'APPLICATION =====
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
+}
