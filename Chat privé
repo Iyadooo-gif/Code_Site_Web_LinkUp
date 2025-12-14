@@ -1,4 +1,21 @@
-# Interface du chat privé 
+#config.php
+<?php
+$host = "localhost";
+$dbname = "chat_db";
+$user = "root";
+$pass = "";
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Erreur de connexion : " . $e->getMessage());
+}
+
+
+
+
+#index.html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,7 +26,24 @@
 <body>
   <div class="chat-container">
     <h2>💬 Chat Privé</h2>
-    <div id="chat-box"></div>
+    <div id="chat_box">
+      <p class="send_message">Toi</p>
+      <p class="receive_message">Moi</p>
+      <p class="send_message">Toi</p>
+      <p class="receive_message">Moi</p>
+      <p class="send_message">Toi</p>
+      <p class="receive_message">Moi</p>
+      <p class="send_message">Toi</p>
+      <p class="receive_message">Moi</p>
+      <p class="send_message">Toi</p>
+      <p class="receive_message">Moi</p>
+      <p class="send_message">Toi</p>
+      <p class="receive_message">Moi</p>
+      <p class="send_message">Toi</p>
+      <p class="receive_message">Moi</p>
+      <p class="send_message">Toi</p>
+      <p class="receive_message">Moi</p>
+    </div>
     <form id="chat-form">
       <input type="text" id="username" placeholder="Votre nom" required>
       <input type="text" id="message" placeholder="Tapez votre message..." required>
@@ -51,8 +85,59 @@ form.addEventListener('submit', e => {
 </script>
 </body>
 </html>
+  
 
-# Style du chat privé
+
+#read_messages.php
+<?php
+require 'config.php';
+
+try {
+    $stmt = $pdo->prepare("SELECT username, message, created_at FROM messages ORDER BY id DESC LIMIT 50");
+    $stmt->execute();
+    $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    foreach (array_reverse($messages) as $msg) {
+        $time = (new DateTime($msg['created_at']))->format('H:i:s');
+        echo "<div class='msg'>";
+        echo "<strong>" . htmlspecialchars($msg['username']) . "</strong>: " . htmlspecialchars($msg['message']);
+        echo "<br><small>$time</small>";
+        echo "</div>";
+    }
+} catch (Exception $e) {
+    echo "Erreur : " . $e->getMessage();
+}
+?>
+
+
+
+
+
+#send_messages.php
+<?php
+require 'config.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'] ?? '';
+    $message = $_POST['message'] ?? '';
+    
+    if (trim($username) && trim($message)) {
+        try {
+            $stmt = $pdo->prepare("INSERT INTO messages (username, message) VALUES (?, ?)");
+            $stmt->execute([htmlspecialchars($username),htmlspecialchars ($message)]);
+    
+        } catch (Exception $e) {
+            echo "Erreur : " . $e->getMessage();
+        }
+    }
+}
+?>
+
+
+
+
+
+#style.css
 body {
   font-family: Arial, sans-serif;
   background: #f2f2f2;
@@ -75,7 +160,7 @@ body {
 }
 
 h2 {
-  background-color: #81c5f6;
+  background-color: #09388a;
   color: white;
   margin: 0;
   padding: 15px;
@@ -124,27 +209,41 @@ h2 {
 }
 
 .msg strong {
-  color: #4c82af;
+  color: #09388a;
 }
 
 .msg small {
-  color: #888888;
+  color: #09388a;
   font-size: 11px;
   display: block;
   margin-top: 5px;
 }
+.send_message{
+  align-self: flex-end;
+  background-color: #09388a;
+  padding: 10px;
+ width: fit-content;
+  color: #ffffff;
+  margin: 2px
+}
 
-# Configuration du chat privé
+.receive_message{
+ align-self: flex-start;
+  background-color: #787a7c;
+  padding: 10px;
+  width: fit-content;
+  color: white;
+  margin: 2px;
+  
+}
 
-<?php
-$host = "localhost";
-$dbname = "chat_db";
-$user = "root";
-$pass = "";
+#chat_box{
+  height: 400px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  white-space: pre-wrap;
+  gap: 3px;
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $user, $pass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Erreur de connexion : " . $e->getMessage());
+
 }
