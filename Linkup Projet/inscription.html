@@ -48,10 +48,50 @@
       </nav>
     </header>
 
+    <!-- Main -->
+    <main class="main">
+      <section class="auth">
+        <h1 class="auth__title">S'inscrire</h1>
+        <form class="form">
+          <div class=""form__group>
+            <label class="form__label" for="name">Nom</label>
+            <input
+              class="form__input"
+              id="name"
+              type="text"
+              placeholder="Entrez votre nom complet"
+              />
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="email">Email</label>
+            <input
+              class="form__input"
+              id="email"
+              type="email"
+              placeholder="Entrez votre email"
+            />
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="password">Password</label>
+            <input
+              class="form__input"
+              id="password"
+              type="password"
+              placeholder="Entrez votre mot de passe"
+            />
+          </div>
+          <label class="form__checkbox-wrapper">
+            <input class="form__checkbox" type="checkbox" id="age" />
+            <span class="form__checkbox-label"></span>
+            <span class="form__checkbox-tooltip">Les membres et les organisateurs Linkup doivent avoir au moins 18 ans.</span>
+            J'ai 18 ans ou plus
+          </label>
+      </main>
+
     <!-- Footer inscription -->
-    <p class="login__footer">
+    <p class="auth__footer">
           Vous avez un compte?
-          <a class="login__footer-link" href="./login.html">Se connecter</a>
+          <a class="auth__footer-link" href="./login.html">Se connecter</a>
         </p>
       </section>
     </main>

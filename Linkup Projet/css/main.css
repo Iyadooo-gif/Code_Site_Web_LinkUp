@@ -163,7 +163,7 @@ body {
   border-radius: 2px;
 }
 
-/* ==================== PAGE LOGIN ==================== */
+/* ==================== PAGES AUTHENTIFICATION ==================== */
 
 /* Main Content */
 .main {
@@ -175,8 +175,8 @@ body {
   background: var(--white);
 }
 
-/* Login Section */
-.login__title {
+/* Authentification Section */
+.auth__title {
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--primary-dark);
@@ -246,6 +246,35 @@ body {
   border-radius: 6px;
 }
 
+.form__checkbox-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Masquer le tooltip par défaut */
+.form__checkbox-tooltip {
+  position: absolute;
+  background-color: #333;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-size: 13px;
+  white-space: nowrap;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  margin-bottom: 8px;
+}
+
+/* Afficher au survol de la checkbox */
+.form__checkbox#age:hover ~ .form__checkbox-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
 /* Links */
 .form__link {
   font-size: 0.9rem;
@@ -286,21 +315,21 @@ body {
 }
 
 /* Footer Text */
-.login__footer {
+.auth__footer {
   font-size: 0.95rem;
   text-align: center;
   margin-top: 2rem;
   color: var(--text-gray);
 }
 
-.login__footer-link {
+.auth__footer-link {
   color: var(--primary-blue);
   font-weight: 700;
   text-decoration: none;
   transition: color 0.2s;
 }
 
-.login__footer-link:hover {
+.auth__footer-link:hover {
   color: #3baee0;
 }
 
@@ -618,7 +647,7 @@ body {
     border-radius: 24px;
   }
 
-  .login__title {
+  .auth__title {
     font-size: 2rem;
   }
 
@@ -687,4 +716,40 @@ body {
     flex-direction: column;
     gap: 2rem;
   }
+}
+
+/* Slides du hero */
+.hero__slide:nth-child(1) {
+  background-image: url("../images/acceuil_app.jpg"); /* image générale d'accueil */
+  background-size: cover;
+  background-position: center;
+}
+.hero__slide:nth-child(2) {
+  background-image: url("../images/boardgame.jpg"); /* image jeux de société */
+  background-size: cover;
+  background-position: center;
+}
+.hero__slide:nth-child(3) {
+  background-image: url("../images/img_morning_run_app.jpg"); /* running / sport */
+  background-size: cover;
+  background-position: center;
+}
+
+/* Activités */
+.activity__image.activity__image--blue {
+  background-image: url("../images/acceuil_app.jpg"); /* Balade en montagne */
+  background-size: cover;
+  background-position: center;
+}
+
+.activity__image.activity__image--orange {
+  background-image: url("../images/poterie.jpg"); /* Atelier poterie */
+  background-size: cover;
+  background-position: center;
+}
+
+.activity__image.activity__image--green {
+  background-image: url("../images/degustation.jpg"); /* Dégustation locale */
+  background-size: cover;
+  background-position: center;
 }
