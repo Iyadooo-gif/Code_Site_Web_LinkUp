@@ -21,7 +21,7 @@ CREATE TABLE utilisateur (
     localisation VARCHAR(255),
     interets TEXT, 
     
-    -- NOUVEAU : Photo de profil (stocke le chemin du fichier, pas l'image elle-même)
+    -- Photo de profil (stocke le chemin du fichier, pas l'image elle-même)
     photo_profil VARCHAR(255) DEFAULT 'assets/img/default_avatar.png',
 
     role ENUM('admin', 'utilisateur') DEFAULT 'utilisateur',
@@ -35,7 +35,7 @@ CREATE TABLE utilisateur (
     INDEX idx_identite (nom, prenom)
 );
 
--- NOUVEAU : Table pour gérer la réinitialisation de mot de passe sécurisée
+--  Table pour gérer la réinitialisation de mot de passe sécurisée
 CREATE TABLE reset_mot_de_passe (
     id_reset INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(255) NOT NULL,
@@ -77,7 +77,7 @@ CREATE TABLE type_activite (
     description TEXT
 );
 
--- NOUVEAU : Table des Tags pour affiner les catégories (ex: "Plein air", "Gratuit")
+--  Table des Tags pour affiner les catégories (ex: "Plein air", "Gratuit")
 CREATE TABLE tag (
     id_tag INT AUTO_INCREMENT PRIMARY KEY,
     nom_tag VARCHAR(50) NOT NULL UNIQUE
@@ -90,7 +90,7 @@ CREATE TABLE activite (
     titre VARCHAR(200) NOT NULL,
     description TEXT,
     
-    -- NOUVEAU : Image de couverture de l'événement
+    -- Image de couverture de l'événement
     image_couverture VARCHAR(255) DEFAULT 'assets/img/default_activity.jpg',
     
     date_heure DATETIME NOT NULL,
@@ -269,3 +269,4 @@ END$$
 DELIMITER ;
 
 SET FOREIGN_KEY_CHECKS = 1;
+
