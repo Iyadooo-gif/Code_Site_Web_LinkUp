@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détails Activité - LinkUp</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="icon" href="logo.png" type="image/png">
+  <!-- Google Maps API -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places" async defer></script>
+</head>
+<body>
+  <header class="header">
+    <nav class="navbar" aria-label="Main navigation">
+      <div class="navbar__container">
+        <a class="logo" href="acceuil.html">
+          <div class="logo__icon">
+            <img src="./images/Logo.png" alt="LinkUp Logo" />
+          </div>
+        </a>
+        <button
+          class="mobile-menu"
+          aria-expanded="false"
+          aria-label="Toggle menu"
+        >
+          <span class="mobile-menu__bar"></span>
+          <span class="mobile-menu__bar"></span>
+          <span class="mobile-menu__bar"></span>
+        </button>
+
+        <ul class="nav" role="menubar">
+          <li class="nav__item">
+            <a class="nav__link" href="acceuil.html#hero">Accueil</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="acceuil.html#categories">Catégories</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="acceuil.html#activities">Activités</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="acceuil.html#contact">Contact</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="notifications.html">Notifications</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="profil.html">Profil</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="settings.html">Réglages</a>
+          </li>
+        </ul>
+
+        <div class="navbar__actions">
+          <div class="user-menu">
+            <button class="user-menu__trigger" aria-expanded="false" aria-label="Menu utilisateur">
+              <div class="user-avatar">
+                <img src="./images/avatar-placeholder.svg" alt="Avatar" class="user-avatar__image">
+              </div>
+              <span class="user-menu__name">Jean Dupont</span>
+              <svg class="user-menu__arrow" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+              </svg>
+            </button>
+            <div class="user-menu__dropdown">
+              <a class="user-menu__item" href="profil.html">
+                <svg fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                </svg>
+                Mon Profil
+              </a>
+              <a class="user-menu__item" href="settings.html">
+                <svg fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
+                </svg>
+                Réglages
+              </a>
+              <a class="user-menu__item" href="notifications.html">
+                <svg fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path>
+                </svg>
+                Notifications
+              </a>
+              <div class="user-menu__divider"></div>
+              <a class="user-menu__item user-menu__item--danger" href="login.html">
+                <svg fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"></path>
+                </svg>
+                Se déconnecter
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main">
+    <!-- Hero Section -->
+    <section class="activity-hero">
+      <div class="activity-hero__image" style="background-image: url('https://source.unsplash.com/1200x600/?hiking,mountain');">
+        <div class="activity-hero__overlay">
+          <div class="container">
+            <div class="activity-hero__content">
+              <h1 class="activity-hero__title">Randonnée en montagne</h1>
+              <div class="activity-hero__meta">
+                <div class="meta-item">
+                  <span class="meta-icon">📅</span>
+                  <span class="meta-text">Samedi 21 Décembre 2025</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-icon">⏱️</span>
+                  <span class="meta-text">4 heures</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-icon">📍</span>
+                  <span class="meta-text">Massif des Alpes, France</span>
+                </div>
+              </div>
+              <div class="activity-hero__actions">
+                <button class="btn btn--primary btn--large" id="register-btn">
+                  <span class="btn-icon">✏️</span>
+                  S'inscrire à l'activité
+                </button>
+                <a href="acceuil.html" class="btn btn--secondary btn--large">
+                  <span class="btn-icon">🏠</span>
+                  Retour à l'accueil
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Activity Details -->
+    <section class="activity-details">
+      <div class="container">
+        <div class="activity-grid">
+          <!-- Main Content -->
+          <div class="activity-main">
+            <!-- Description -->
+            <div class="activity-section">
+              <h2 class="section-title">Description de l'activité</h2>
+              <div class="activity-description">
+                <p>Rejoignez-nous pour une magnifique randonnée dans le massif des Alpes ! Cette sortie de 4 heures vous permettra de découvrir des paysages à couper le souffle, des sommets enneigés et une biodiversité exceptionnelle.</p>
+                <p>Le parcours, accessible à tous niveaux, serpente à travers des forêts de pins et des alpages fleuris. Vous serez accompagnés par un guide expérimenté qui partagera avec vous son savoir sur la faune et la flore locales.</p>
+                <p><strong>Niveau :</strong> Intermédiaire - Quelques dénivelés mais rien d'insurmontable</p>
+                <p><strong>Points forts :</strong> Vue panoramique, pique-nique en altitude, découverte de la faune alpine</p>
+              </div>
+            </div>
+
+            <!-- Organizer Profile -->
+            <div class="activity-section">
+              <h2 class="section-title">Organisateur</h2>
+              <div class="organizer-card">
+                <div class="organizer-avatar">
+                  <img src="https://source.unsplash.com/100x100/?portrait,guide" alt="Guide" />
+                </div>
+                <div class="organizer-info">
+                  <h3 class="organizer-name">Marc Dubois</h3>
+                  <p class="organizer-role">Guide de montagne certifié</p>
+                  <div class="organizer-stats">
+                    <div class="stat">
+                      <span class="stat-number">47</span>
+                      <span class="stat-label">Activités organisées</span>
+                    </div>
+                    <div class="stat">
+                      <span class="stat-number">4.9</span>
+                      <span class="stat-label">Note moyenne</span>
+                    </div>
+                  </div>
+                  <div class="organizer-badges">
+                    <span class="badge badge--verified">✓ Vérifié</span>
+                    <span class="badge badge--certified">🎓 Certifié</span>
+                  </div>
+                </div>
+                <div class="organizer-actions">
+                  <button class="btn btn--outline">Contacter</button>
+                  <button class="btn btn--outline">Voir le profil</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <div class="activity-sidebar">
+            <!-- Important Conditions -->
+            <div class="sidebar-card">
+              <h3 class="sidebar-title">Conditions importantes</h3>
+              <div class="conditions-list">
+                <div class="condition-item">
+                  <h4>Équipement requis</h4>
+                  <ul>
+                    <li>Baskets de randonnée ou chaussures de marche</li>
+                    <li>Vêtements adaptés à la météo (couches)</li>
+                    <li>Bouteille d'eau (1.5L minimum)</li>
+                    <li>Crème solaire et chapeau</li>
+                    <li>Bâtons de randonnée (optionnel)</li>
+                  </ul>
+                </div>
+                <div class="condition-item">
+                  <h4>Prix</h4>
+                  <div class="price-display">
+                    <span class="price-amount">25€</span>
+                    <span class="price-per-person">par personne</span>
+                  </div>
+                  <p class="price-note">Inclut l'accompagnement et l'assurance</p>
+                </div>
+                <div class="condition-item">
+                  <h4>Notes importantes</h4>
+                  <ul>
+                    <li>Âge minimum : 12 ans</li>
+                    <li>Annulation possible jusqu'à 24h avant</li>
+                    <li>Activité soumise aux conditions météo</li>
+                    <li>Repas non inclus (pique-nique tiré du sac)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Participants -->
+            <div class="sidebar-card">
+              <h3 class="sidebar-title">Participants</h3>
+              <div class="participants-info">
+                <div class="participants-count">
+                  <span class="current-count">8</span>
+                  <span class="separator">/</span>
+                  <span class="max-count">15</span>
+                  <span class="count-label">inscrits</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 53%"></div>
+                </div>
+                <p class="spots-left">7 places restantes</p>
+              </div>
+              <div class="participants-avatars">
+                <div class="avatar-stack">
+                  <img src="https://source.unsplash.com/40x40/?portrait,woman1" alt="Participant 1" />
+                  <img src="https://source.unsplash.com/40x40/?portrait,man1" alt="Participant 2" />
+                  <img src="https://source.unsplash.com/40x40/?portrait,woman2" alt="Participant 3" />
+                  <div class="avatar-more">+5</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Location Section -->
+        <div class="activity-section">
+          <h2 class="section-title">Localisation & Accès</h2>
+          <div class="location-grid">
+            <div class="location-info">
+              <div class="location-details">
+                <h3>Point de rendez-vous</h3>
+                <address>
+                  Parking du Col de la Madeleine<br>
+                  73440 Les Belleville<br>
+                  France
+                </address>
+                <p><strong>Coordonnées GPS :</strong> 45.4017° N, 6.5589° E</p>
+                <p><strong>Heure de rendez-vous :</strong> 9h00</p>
+              </div>
+
+              <div class="transport-options">
+                <h3>Moyens de transport</h3>
+                <div class="transport-tabs">
+                  <button class="transport-tab active" data-transport="car">🚗 Voiture</button>
+                  <button class="transport-tab" data-transport="bus">🚌 Bus</button>
+                  <button class="transport-tab" data-transport="train">🚂 Train</button>
+                </div>
+
+                <div class="transport-content active" id="car-transport">
+                  <h4>En voiture</h4>
+                  <p>Depuis Chambéry : A43 direction Albertville, puis D925 vers Courchevel</p>
+                  <p>Parking gratuit disponible sur place</p>
+                  <p><strong>Distance :</strong> ~45 km (1h)</p>
+                </div>
+
+                <div class="transport-content" id="bus-transport">
+                  <h4>En bus</h4>
+                  <p>Ligne 5050 depuis Chambéry (arrêt "Col de la Madeleine")</p>
+                  <p>Départ : 7h30 - Arrivée : 8h45</p>
+                  <p><strong>Tarif :</strong> 12€ aller-retour</p>
+                </div>
+
+                <div class="transport-content" id="train-transport">
+                  <h4>En train</h4>
+                  <p>Train TER jusqu'à Moutiers, puis bus de correspondance</p>
+                  <p>Correspondance assurée - Durée totale : 2h30</p>
+                  <p><strong>Tarif :</strong> 25€ aller-retour</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="location-map">
+              <div id="map" class="map-container"></div>
+              <div class="map-actions">
+                <button class="btn btn--small" onclick="openInMaps()">
+                  📍 Ouvrir dans Maps
+                </button>
+                <button class="btn btn--small" onclick="getDirections()">
+                  🧭 Itinéraire
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Related Activities -->
+        <div class="activity-section">
+          <h2 class="section-title">Activités similaires</h2>
+          <div class="related-activities">
+            <div class="related-activity-card">
+              <div class="related-activity-image" style="background-image: url('https://source.unsplash.com/300x200/?skiing');">
+                <span class="activity-type">Sport</span>
+              </div>
+              <div class="related-activity-content">
+                <h3>Ski de randonnée</h3>
+                <p>Découvrez les joies du ski en altitude avec un moniteur expérimenté.</p>
+                <div class="activity-meta">
+                  <span>📅 15 Janvier 2026</span>
+                  <span>⏱️ 6h</span>
+                  <span>📍 Alpes</span>
+                </div>
+                <a href="activity-details.html" class="btn btn--outline btn--small">Voir détails</a>
+              </div>
+            </div>
+
+            <div class="related-activity-card">
+              <div class="related-activity-image" style="background-image: url('https://source.unsplash.com/300x200/?photography');">
+                <span class="activity-type">Nature</span>
+              </div>
+              <div class="related-activity-content">
+                <h3>Photographie de paysage</h3>
+                <p>Apprenez à capturer la beauté des Alpes avec un photographe professionnel.</p>
+                <div class="activity-meta">
+                  <span>📅 28 Décembre 2025</span>
+                  <span>⏱️ 3h</span>
+                  <span>📍 Mont Blanc</span>
+                </div>
+                <a href="activity-details.html" class="btn btn--outline btn--small">Voir détails</a>
+              </div>
+            </div>
+
+            <div class="related-activity-card">
+              <div class="related-activity-image" style="background-image: url('https://source.unsplash.com/300x200/?camping');">
+                <span class="activity-type">Aventure</span>
+              </div>
+              <div class="related-activity-content">
+                <h3>Camping en altitude</h3>
+                <p>Vivez une nuit sous les étoiles dans un refuge de montagne.</p>
+                <div class="activity-meta">
+                  <span>📅 5 Janvier 2026</span>
+                  <span>⏱️ 24h</span>
+                  <span>📍 Vanoise</span>
+                </div>
+                <a href="activity-details.html" class="btn btn--outline btn--small">Voir détails</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__content">
+        <div class="footer__section">
+          <h3>LinkUp</h3>
+          <p>Connectez-vous avec des passionnés et participez à des activités extraordinaires.</p>
+        </div>
+        <div class="footer__section">
+          <h4>Liens rapides</h4>
+          <ul>
+            <li><a href="acceuil.html#hero">Accueil</a></li>
+            <li><a href="acceuil.html#categories">Catégories</a></li>
+            <li><a href="acceuil.html#activities">Activités</a></li>
+            <li><a href="profil.html">Profil</a></li>
+          </ul>
+        </div>
+        <div class="footer__section">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="acceuil.html#contact">Contact</a></li>
+            <li><a href="#">Aide</a></li>
+            <li><a href="#">Confidentialité</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2025 LinkUp. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Activity Details Page JavaScript
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize Google Maps
+      initMap();
+
+      // Transport tabs functionality
+      initTransportTabs();
+
+      // Registration button functionality
+      initRegistration();
+    });
+
+    function initMap() {
+      // Coordinates for Col de la Madeleine
+      const location = { lat: 45.4017, lng: 6.5589 };
+
+      const map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 12,
+        center: location,
+        mapTypeId: 'terrain'
+      });
+
+      const marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        title: 'Point de rendez-vous - Col de la Madeleine'
+      });
+
+      // Add info window
+      const infoWindow = new google.maps.InfoWindow({
+        content: `
+          <div style="max-width: 200px;">
+            <h4>Col de la Madeleine</h4>
+            <p>Point de rendez-vous pour la randonnée</p>
+            <p>Altitude: 1,993m</p>
+          </div>
+        `
+      });
+
+      marker.addListener('click', () => {
+        infoWindow.open(map, marker);
+      });
+    }
+
+    function initTransportTabs() {
+      const tabs = document.querySelectorAll('.transport-tab');
+      const contents = document.querySelectorAll('.transport-content');
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          // Remove active class from all tabs
+          tabs.forEach(t => t.classList.remove('active'));
+          contents.forEach(c => c.classList.remove('active'));
+
+          // Add active class to clicked tab
+          tab.classList.add('active');
+          const transportType = tab.dataset.transport;
+          document.getElementById(`${transportType}-transport`).classList.add('active');
+        });
+      });
+    }
+
+    function initRegistration() {
+      const registerBtn = document.getElementById('register-btn');
+
+      registerBtn.addEventListener('click', function() {
+        if (this.textContent.includes('S\'inscrire')) {
+          // Simulate registration process
+          this.innerHTML = '<span class="btn-icon">✅</span> Inscrit !';
+          this.classList.add('btn--success');
+          this.disabled = true;
+
+          // Show success message
+          showNotification('Inscription confirmée ! Vous recevrez un email de confirmation.', 'success');
+        }
+      });
+    }
+
+    function openInMaps() {
+      const lat = 45.4017;
+      const lng = 6.5589;
+      const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+      window.open(url, '_blank');
+    }
+
+    function getDirections() {
+      const lat = 45.4017;
+      const lng = 6.5589;
+      const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}&travelmode=driving`;
+      window.open(url, '_blank');
+    }
+
+    function showNotification(message, type = 'info') {
+      // Create notification element
+      const notification = document.createElement('div');
+      notification.className = `notification-toast notification-${type}`;
+      notification.innerHTML = `
+        <span class="notification-icon">${type === 'success' ? '✅' : 'ℹ️'}</span>
+        <span class="notification-message">${message}</span>
+        <button class="notification-close" onclick="this.parentElement.remove()">×</button>
+      `;
+
+      // Add to page
+      document.body.appendChild(notification);
+
+      // Auto remove after 5 seconds
+      setTimeout(() => {
+        if (notification.parentElement) {
+          notification.remove();
+        }
+      }, 5000);
+    }
+  </script>
+</body>
+</html>
