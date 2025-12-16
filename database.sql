@@ -1,11 +1,8 @@
--- ============================================================
--- INITIALISATION DU PROJET LINKUP (VERSION V2 - PROD)
--- ============================================================
--- NOTE: suppression automatique retirée pour éviter toute perte de données
+
 CREATE DATABASE IF NOT EXISTS LinkUpDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE LinkUpDB;
 
--- On désactive les sécurités temporairement pour créer les tables dans l'ordre qu'on veut
+
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ============================================================
@@ -269,4 +266,5 @@ END$$
 DELIMITER ;
 
 SET FOREIGN_KEY_CHECKS = 1;
+
 
