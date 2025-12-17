@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Réglages - LinkUp</title>
+    <link rel="stylesheet" href="css/main2.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <nav class="navbar">
+        <div class="navbar__container">
+          <a href="index.html" class="logo">
+            <div class="logo__icon">
+              <img src="images/Logo.png" alt="LinkUp Logo" />
+            </div>
+          </a>
+
+          <ul class="nav">
+            <li class="nav__item">
+              <a href="index.html" class="nav__link">Accueil</a>
+            </li>
+            <li class="nav__item">
+              <a href="index.html#categorie" class="nav__link">Catégories</a>
+            </li>
+            <li class="nav__item">
+              <a href="index.html#activites" class="nav__link">Activités</a>
+            </li>
+            <li class="nav__item">
+              <a href="index.html#contact" class="nav__link">Contact</a>
+            </li>
+            <li class="nav__item">
+              <a href="notifications.html" class="nav__link">Notifications</a>
+            </li>
+            <li class="nav__item">
+              <a href="profil.html" class="nav__link">Profil</a>
+            </li>
+            <li class="nav__item">
+              <a href="settings.html" class="nav__link nav__link--active"
+                >Réglages</a
+              >
+            </li>
+          </ul>
+
+          <div class="navbar__actions">
+            <div class="user-menu">
+              <button class="user-menu__trigger" aria-expanded="false">
+                <div class="user-avatar">
+                  <img
+                    src="images/avatar-placeholder.svg"
+                    alt="Avatar"
+                    class="user-avatar__image"
+                  />
+                </div>
+                <span class="user-menu__name">Jean Dupont</span>
+                <svg
+                  class="user-menu__arrow"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                  ></path>
+                </svg>
+              </button>
+              <div class="user-menu__dropdown">
+                <a href="profil.html" class="user-menu__item">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                    ></path>
+                  </svg>
+                  Mon Profil
+                </a>
+                <a
+                  href="settings.html"
+                  class="user-menu__item user-menu__item--active"
+                >
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                    ></path>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                    ></path>
+                  </svg>
+                  Paramètres
+                </a>
+                <div class="user-menu__divider"></div>
+                <a href="#" class="user-menu__item user-menu__item--danger">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                    ></path>
+                  </svg>
+                  Déconnexion
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="settings-hero">
+      <div class="settings-hero__content">
+        <h1 class="settings-hero__title">Réglages</h1>
+        <p class="settings-hero__subtitle">
+          Personnalisez votre expérience LinkUp
+        </p>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+      <div class="settings__container">
+        <!-- Notifications Settings -->
+        <div class="settings-card">
+          <div class="settings-card__header">
+            <div class="settings-card__icon">🔔</div>
+            <div>
+              <h2 class="settings-card__title">Notifications</h2>
+              <p class="settings-card__description">
+                Gérez vos préférences de notifications
+              </p>
+            </div>
+          </div>
+          <div class="settings-card__content">
+            <div class="notification-group">
+              <h3>Notifications Importantes</h3>
+              <div class="notification-item">
+                <div class="notification-info">
+                  <label class="notification-label"
+                    >Fonctionnement de la plateforme</label
+                  >
+                  <p class="notification-description">
+                    Notifications importantes sur le fonctionnement
+                  </p>
+                </div>
+                <label class="toggle">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="notification-item">
+                <div class="notification-info">
+                  <label class="notification-label">Offres spéciales</label>
+                  <p class="notification-description">
+                    Conseils et actualités LinkUp
+                  </p>
+                </div>
+                <label class="toggle">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="notification-item">
+                <div class="notification-info">
+                  <label class="notification-label"
+                    >Modifications d'activités</label
+                  >
+                  <p class="notification-description">
+                    Changements dans les activités auxquelles vous participez
+                  </p>
+                </div>
+                <label class="toggle">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <div
+              class="notification-group"
+              style="
+                margin-top: 2rem;
+                border-top: 1px solid var(--bg-light);
+                padding-top: 2rem;
+              "
+            >
+              <h3>Canaux de Communication</h3>
+              <div class="notification-item">
+                <div class="notification-info">
+                  <label class="notification-label">SMS Critiques</label>
+                  <p class="notification-description">
+                    Alertes importantes sur vos activités
+                  </p>
+                </div>
+                <label class="toggle">
+                  <input type="checkbox" />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="notification-item">
+                <div class="notification-info">
+                  <label class="notification-label">Notifications in-app</label>
+                  <p class="notification-description">
+                    Messages dans l'application
+                  </p>
+                </div>
+                <label class="toggle">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="notification-item">
+                <div class="notification-info">
+                  <label class="notification-label"
+                    >Notifications en temps réel</label
+                  >
+                  <p class="notification-description">
+                    Alertes instantanées sur les activités
+                  </p>
+                </div>
+                <label class="toggle">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Participation Settings -->
+        <div class="settings-card">
+          <div class="settings-card__header">
+            <div class="settings-card__icon">👥</div>
+            <div>
+              <h2 class="settings-card__title">Participation</h2>
+              <p class="settings-card__description">
+                Contrôlez comment vous participez aux activités
+              </p>
+            </div>
+          </div>
+          <div class="settings-card__content">
+            <div class="participation-settings">
+              <div class="participation-item">
+                <div class="participation-info">
+                  <label class="participation-label"
+                    >Approbation de l'organisateur</label
+                  >
+                  <p class="participation-description">
+                    Les organisateurs doivent approuver votre participation
+                  </p>
+                </div>
+                <label class="toggle">
+                  <input type="checkbox" />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="participation-item">
+                <div class="participation-info">
+                  <label class="participation-label"
+                    >Visibilité des activités</label
+                  >
+                  <p class="participation-description">
+                    Comment vos activités sont visibles par défaut
+                  </p>
+                </div>
+                <select class="form-select" style="max-width: 200px">
+                  <option value="public">Public</option>
+                  <option value="friends">Amis seulement</option>
+                  <option value="private">Privé</option>
+                </select>
+              </div>
+              <div class="participation-item">
+                <div class="participation-info">
+                  <label class="participation-label"
+                    >Invitations directes</label
+                  >
+                  <p class="participation-description">
+                    Permettre aux autres utilisateurs de vous inviter
+                  </p>
+                </div>
+                <label class="toggle">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Security Settings -->
+        <div class="settings-card">
+          <div class="settings-card__header">
+            <div class="settings-card__icon">🔒</div>
+            <div>
+              <h2 class="settings-card__title">Sécurité</h2>
+              <p class="settings-card__description">
+                Protégez votre compte et vos données
+              </p>
+            </div>
+          </div>
+          <div class="settings-card__content">
+            <div class="security-settings">
+              <div class="security-action">
+                <div class="security-action__info">
+                  <h3>Authentification à deux facteurs</h3>
+                  <p>Dernière modification : il y a 3 mois</p>
+                </div>
+                <div class="security-status">
+                  <span
+                    class="security-status__badge security-status__badge--inactive"
+                    >Inactif</span
+                  >
+                  <button class="btn btn--secondary btn--small">Activer</button>
+                </div>
+              </div>
+
+              <div class="security-action">
+                <div class="security-action__info">
+                  <h3>Sessions connectées</h3>
+                  <p>Gérez vos sessions actives</p>
+                </div>
+                <button class="btn btn--outline btn--small">Gérer</button>
+              </div>
+
+              <div class="security-action">
+                <div class="security-action__info">
+                  <h3>Changement de mot de passe</h3>
+                  <p>Renforcez la sécurité avec un nouveau mot de passe</p>
+                </div>
+                <button class="btn btn--outline btn--small">Changer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Privacy Settings -->
+        <div class="settings-card">
+          <div class="settings-card__header">
+            <div class="settings-card__icon">🔐</div>
+            <div>
+              <h2 class="settings-card__title">Confidentialité</h2>
+              <p class="settings-card__description">
+                Gérez vos données personnelles
+              </p>
+            </div>
+          </div>
+          <div class="settings-card__content">
+            <div class="privacy-settings">
+              <div class="privacy-action">
+                <div class="privacy-action__info">
+                  <h3>Télécharger vos données</h3>
+                  <p>Téléchargez une copie de toutes vos données</p>
+                </div>
+                <button class="btn btn--outline btn--small">Télécharger</button>
+              </div>
+
+              <div class="privacy-action">
+                <div class="privacy-action__info">
+                  <h3>Politique de confidentialité</h3>
+                  <p>Lisez notre politique de confidentialité</p>
+                </div>
+                <button class="btn btn--outline btn--small">Consulter</button>
+              </div>
+
+              <div class="privacy-action privacy-action--danger">
+                <div class="privacy-action__info">
+                  <h3>Supprimer mon compte</h3>
+                  <p>Cette action est irréversible</p>
+                </div>
+                <button class="btn btn--danger btn--small">Supprimer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Language & Regional Settings -->
+        <div class="settings-card">
+          <div class="settings-card__header">
+            <div class="settings-card__icon">🌐</div>
+            <div>
+              <h2 class="settings-card__title">Langue & Région</h2>
+              <p class="settings-card__description">
+                Personnalisez votre expérience linguistique
+              </p>
+            </div>
+          </div>
+          <div class="settings-card__content">
+            <div class="language-settings">
+              <div class="language-item">
+                <div class="language-info">
+                  <label class="language-label">Langue d'affichage</label>
+                  <p class="language-description">
+                    Choisissez votre langue préférée
+                  </p>
+                </div>
+                <select class="form-select" style="max-width: 150px">
+                  <option value="fr">Français</option>
+                  <option value="en">English</option>
+                  <option value="es">Español</option>
+                  <option value="de">Deutsch</option>
+                </select>
+              </div>
+
+              <div class="language-item">
+                <div class="language-info">
+                  <label class="language-label">Format des dates</label>
+                  <p class="language-description">
+                    Choisissez le format d'affichage
+                  </p>
+                </div>
+                <select class="form-select" style="max-width: 150px">
+                  <option value="dd/mm/yyyy">JJ/MM/AAAA</option>
+                  <option value="mm/dd/yyyy">MM/JJ/AAAA</option>
+                  <option value="yyyy-mm-dd">AAAA-MM-JJ</option>
+                </select>
+              </div>
+
+              <div class="language-item">
+                <div class="language-info">
+                  <label class="language-label">Format des heures</label>
+                  <p class="language-description">
+                    Choisissez le format d'affichage
+                  </p>
+                </div>
+                <select class="form-select" style="max-width: 150px">
+                  <option value="24h">24 heures</option>
+                  <option value="12h">12 heures</option>
+                </select>
+              </div>
+
+              <div class="language-item">
+                <div class="language-info">
+                  <label class="language-label">Fuseau horaire</label>
+                  <p class="language-description">Votre fuseau horaire local</p>
+                </div>
+                <select class="form-select" style="max-width: 250px">
+                  <option value="paris">Europe/Paris (UTC+1)</option>
+                  <option value="london">Europe/London (UTC+0)</option>
+                  <option value="tokyo">Asia/Tokyo (UTC+9)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Integrations -->
+        <div class="settings-card">
+          <div class="settings-card__header">
+            <div class="settings-card__icon">🔗</div>
+            <div>
+              <h2 class="settings-card__title">Intégrations</h2>
+              <p class="settings-card__description">
+                Connectez vos outils préférés
+              </p>
+            </div>
+          </div>
+          <div class="settings-card__content">
+            <div class="integration-settings">
+              <div class="integration-item">
+                <div class="integration-info">
+                  <div class="integration-header">
+                    <span class="integration-icon">☁️</span>
+                    <h3>Cloud Storage</h3>
+                  </div>
+                  <p class="integration-description">
+                    Sauvegardez vos fichiers et photos d'activités
+                  </p>
+                </div>
+                <div class="integration-status">
+                  <span
+                    class="integration-status__badge integration-status__badge--inactive"
+                    >Déconnecté</span
+                  >
+                  <button class="btn btn--secondary btn--small">
+                    Connecter
+                  </button>
+                </div>
+              </div>
+
+              <div class="integration-item">
+                <div class="integration-info">
+                  <div class="integration-header">
+                    <span class="integration-icon">💬</span>
+                    <h3>Slack</h3>
+                  </div>
+                  <p class="integration-description">
+                    Recevez des notifications dans vos canaux
+                  </p>
+                </div>
+                <div class="integration-status">
+                  <span
+                    class="integration-status__badge integration-status__badge--inactive"
+                    >Déconnecté</span
+                  >
+                  <button class="btn btn--secondary btn--small">
+                    Connecter
+                  </button>
+                </div>
+              </div>
+
+              <div class="integration-item">
+                <div class="integration-info">
+                  <div class="integration-header">
+                    <span class="integration-icon">📅</span>
+                    <h3>Calendrier</h3>
+                  </div>
+                  <p class="integration-description">
+                    Synchronisez vos activités avec votre calendrier
+                  </p>
+                </div>
+                <div class="integration-status">
+                  <span
+                    class="integration-status__badge integration-status__badge--active"
+                    >Connecté</span
+                  >
+                  <button class="btn btn--outline btn--small">Gérer</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Appearance Settings -->
+        <div class="settings-card">
+          <div class="settings-card__header">
+            <div class="settings-card__icon">🎨</div>
+            <div>
+              <h2 class="settings-card__title">Apparence</h2>
+              <p class="settings-card__description">
+                Personnalisez l'apparence de l'application
+              </p>
+            </div>
+          </div>
+          <div class="settings-card__content">
+            <div class="appearance-settings">
+              <h3 style="margin-bottom: 1.5rem">
+                Choisissez votre thème préféré
+              </h3>
+              <div class="theme-selector">
+                <label class="theme-option">
+                  <input type="radio" name="theme" value="light" checked />
+                  <div class="theme-preview theme-preview--light">
+                    <div class="theme-preview__icon">☀️</div>
+                    <div>Mode clair</div>
+                  </div>
+                </label>
+                <label class="theme-option">
+                  <input type="radio" name="theme" value="dark" />
+                  <div class="theme-preview theme-preview--dark">
+                    <div class="theme-preview__icon">🌙</div>
+                    <div>Mode sombre</div>
+                  </div>
+                </label>
+                <label class="theme-option">
+                  <input type="radio" name="theme" value="auto" />
+                  <div class="theme-preview theme-preview--auto">
+                    <div class="theme-preview__icon">⚙️</div>
+                    <div>Auto</div>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Save Button -->
+        <div class="settings-actions">
+          <button class="btn btn--outline">Annuler</button>
+          <button class="btn btn--secondary">
+            Enregistrer les modifications
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer__content">
+        <div class="footer__wrapper">
+          <div class="footer__section">
+            <h3 class="footer__section-title">LinkUp</h3>
+            <p class="footer__description">
+              Découvrez et organisez des activités près de chez vous.
+            </p>
+          </div>
+          <div class="footer__section">
+            <h4 class="footer__section-title">Liens rapides</h4>
+            <ul class="footer__list">
+              <li class="footer__item">
+                <a href="index.html" class="footer__link">Accueil</a>
+              </li>
+              <li class="footer__item">
+                <a href="index.html#activites" class="footer__link"
+                  >Activités</a
+                >
+              </li>
+              <li class="footer__item">
+                <a href="index.html#contact" class="footer__link">À propos</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer__section">
+            <h4 class="footer__section-title">Ressources</h4>
+            <ul class="footer__list">
+              <li class="footer__item">
+                <a href="#" class="footer__link">Aide</a>
+              </li>
+              <li class="footer__item">
+                <a href="#" class="footer__link">Confidentialité</a>
+              </li>
+              <li class="footer__item">
+                <a href="#" class="footer__link">Conditions</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p>&copy; 2024 LinkUp. Tous droits réservés.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document
+        .querySelector(".user-menu__trigger")
+        .addEventListener("click", function () {
+          const expanded = this.getAttribute("aria-expanded") === "true";
+          this.setAttribute("aria-expanded", !expanded);
+        });
+
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("navbar--scrolled");
+        } else {
+          navbar.classList.remove("navbar--scrolled");
+        }
+      });
+    </script>
+  </body>
+</html>

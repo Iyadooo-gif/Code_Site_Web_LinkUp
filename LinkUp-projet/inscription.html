@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>LinkUp - Connexion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/main2.css" />
+  </head>
+  <body>
+    <!-- Header inscription -->
+    <header class="header">
+      <nav class="navbar" aria-label="Main navigation">
+        <div class="navbar__container">
+          <a class="logo" href="index.html">
+            <div class="logo__icon">
+              <img src="images/logo.png" alt="LinkUp Logo" />
+            </div>
+          </a>
+          <button
+            class="mobile-menu"
+            aria-expanded="false"
+            aria-label="Toggle menu"
+          >
+            <span class="mobile-menu__bar"></span>
+            <span class="mobile-menu__bar"></span>
+            <span class="mobile-menu__bar"></span>
+          </button>
+
+          <ul class="nav" role="menubar">
+            <li class="nav__item">
+              <a class="nav__link" href="index.html#hero">Accueil</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="index.html#categories">Catégories</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="index.html#activities">Activités</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="index.html#contact">Contact</a>
+            </li>
+          </ul>
+
+          <div class="navbar__actions">
+            <a class="btn btn--secondary" href="login.html">Se connecter</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main -->
+    <main class="main">
+      <section class="auth">
+        <h1 class="auth__title">S'inscrire</h1>
+        <form class="form">
+          <div class=""form__group>
+            <label class="form__label" for="name">Nom</label>
+            <input
+              class="form__input"
+              id="name"
+              type="text"
+              placeholder="Entrez votre nom complet"
+              />
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="email">Email</label>
+            <input
+              class="form__input"
+              id="email"
+              type="email"
+              placeholder="Entrez votre email"
+            />
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="password">Password</label>
+            <input
+              class="form__input"
+              id="password"
+              type="password"
+              placeholder="Entrez votre mot de passe"
+            />
+          </div>
+          <label class="form__checkbox-wrapper">
+            <input class="form__checkbox" type="checkbox" id="age" />
+            <span class="form__checkbox-label"></span>
+            <span class="form__checkbox-tooltip">Les membres et les organisateurs Linkup doivent avoir au moins 18 ans.</span>
+            J'ai 18 ans ou plus
+          </label>
+      </main>
+
+    <!-- Footer inscription -->
+    <p class="auth__footer">
+          Vous avez un compte?
+          <a class="auth__footer-link" href="./login.html">Se connecter</a>
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__content">
+        <div class="footer__wrapper">
+          <div class="footer__section">
+            <h4 class="footer__section-title">LinkUp</h4>
+            <p class="footer__description">
+              Partagez et découvrez des activités proches de vous.
+            </p>
+          </div>
+          <div class="footer__section">
+            <h4 class="footer__section-title">Liens</h4>
+            <ul class="footer__list">
+              <li class="footer__item">
+                <a class="footer__link" href="index.html#categories"
+                  >Catégories</a
+                >
+              </li>
+              <li class="footer__item">
+                <a class="footer__link" href="index.html#activities"
+                  >Activités</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        © <span id="year"></span> LinkUp — Tous droits réservés
+      </div>
+    </footer>
+    <script src="js/login.js"></script>
+  </body>
+</html>

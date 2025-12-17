@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LinkUp - Découvrez et partagez des activités</title>
+    <link rel="stylesheet" href="css/main2.css" />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navbar" aria-label="Main navigation">
+        <div class="navbar__container">
+          <a class="logo" href="index.html">
+            <div class="logo__icon">
+              <img src="images/logo.png" alt="LinkUp Logo" />
+            </div>
+          </a>
+          <button
+            class="mobile-menu"
+            aria-expanded="false"
+            aria-label="Toggle menu"
+          >
+            <span class="mobile-menu__bar"></span>
+            <span class="mobile-menu__bar"></span>
+            <span class="mobile-menu__bar"></span>
+          </button>
+
+          <ul class="nav" role="menubar">
+            <li class="nav__item">
+              <a class="nav__link nav__link--active" href="#hero">Accueil</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#categories">Catégories</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#activities">Activités</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#contact">Contact</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="notifications.html">Notifications</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="profil.html">Profil</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="settings.html">Réglages</a>
+            </li>
+          </ul>
+
+          <div class="navbar__actions">
+            <a class="btn btn--secondary" href="login.html">Se connecter</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+      <div class="hero__carousel" aria-hidden="true">
+        <div class="hero__slide"></div>
+        <div class="hero__slide"></div>
+        <div class="hero__slide"></div>
+      </div>
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <h1 class="hero__title">Trouvez des activités près de chez vous</h1>
+        <div class="hero__search" role="search">
+          <input
+            class="hero__input"
+            type="text"
+            placeholder="Rechercher une activité, lieu ou mot-clé..."
+          />
+          <button class="hero__button" type="button" aria-label="Search">
+            Rechercher
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="section">
+      <div class="section__container">
+        <h2 class="section__title">Explorez les Activités par Catégorie</h2>
+        <div class="categories">
+          <article class="category" tabindex="0">
+            <div class="category__icon" aria-hidden="true">🚴</div>
+            <h3 class="category__title">Sport & Aventure</h3>
+            <p class="category__description">
+              Randonnées, vélo, sports nautiques et plus.
+            </p>
+          </article>
+          <article class="category" tabindex="0">
+            <div class="category__icon" aria-hidden="true">🎨</div>
+            <h3 class="category__title">Arts & Ateliers</h3>
+            <p class="category__description">
+              Peinture, poterie, ateliers créatifs locaux.
+            </p>
+          </article>
+          <article class="category" tabindex="0">
+            <div class="category__icon" aria-hidden="true">🍽️</div>
+            <h3 class="category__title">Food & Drink</h3>
+            <p class="category__description">
+              Expériences culinaires et dégustations.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Activities Section -->
+    <section id="activities" class="section section--gray">
+      <div class="section__container">
+        <h2 class="section__title">Activités Populaires Près de Chez Vous</h2>
+        <div class="activities">
+          <article class="activity">
+            <div class="activity__image activity__image--blue"></div>
+            <div class="activity__content">
+              <h3 class="activity__title">Balade en montagne</h3>
+              <p class="activity__meta">2h · Facile · 12 personnes</p>
+              <button class="activity__button" type="button">
+                Voir détails
+              </button>
+            </div>
+          </article>
+
+          <article class="activity">
+            <div class="activity__image activity__image--orange"></div>
+            <div class="activity__content">
+              <h3 class="activity__title">Atelier poterie</h3>
+              <p class="activity__meta">3h · Tous niveaux · 8 personnes</p>
+              <button class="activity__button" type="button">
+                Voir détails
+              </button>
+            </div>
+          </article>
+
+          <article class="activity">
+            <div class="activity__image activity__image--green"></div>
+            <div class="activity__content">
+              <h3 class="activity__title">Dégustation locale</h3>
+              <p class="activity__meta">1.5h · 18 ans+ · 20 personnes</p>
+              <button class="activity__button" type="button">
+                Voir détails
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta">
+      <div class="cta__container">
+        <h2 class="cta__title">Prêt ? Créez Votre Propre Activité !</h2>
+        <p class="cta__description">
+          Connectez-vous et partagez des expériences avec votre communauté
+        </p>
+        <button
+          class="btn btn--secondary"
+          type="button"
+          onclick="window.location.href='create-activity.html'"
+        >
+          Créer une Activité
+        </button>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer__content">
+        <div class="footer__wrapper">
+          <div class="footer__section">
+            <h4 class="footer__section-title">LinkUp</h4>
+            <p class="footer__description">
+              Partagez et découvrez des activités proches de vous.
+            </p>
+          </div>
+          <div class="footer__section">
+            <h4 class="footer__section-title">Liens</h4>
+            <ul class="footer__list">
+              <li class="footer__item">
+                <a class="footer__link" href="#categories">Catégories</a>
+              </li>
+              <li class="footer__item">
+                <a class="footer__link" href="#activities">Activités</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        © <span id="year"></span> LinkUp — Tous droits réservés
+      </div>
+    </footer>
+
+    <script src="js/login.js"></script>
+  </body>
+</html>
