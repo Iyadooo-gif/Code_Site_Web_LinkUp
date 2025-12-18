@@ -39,6 +39,15 @@
             <li class="nav__item">
               <a class="nav__link" href="index.html#contact">Contact</a>
             </li>
+            <li class="nav__item">
+              <a class="nav__link" href="notifications.html">Notifications</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="profil.html">Profil</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="settings.html">Réglages</a>
+            </li>
           </ul>
 
           <div class="navbar__actions">
@@ -52,40 +61,52 @@
     <main class="main">
       <section class="auth">
         <h1 class="auth__title">S'inscrire</h1>
-        <form class="form">
-          <div class=""form__group>
+        <form class="form" method="POST" action="process_inscription.php">
+          <div class="form__group">
             <label class="form__label" for="name">Nom</label>
             <input
               class="form__input"
               id="name"
+              name="name"
               type="text"
               placeholder="Entrez votre nom complet"
-              />
+              required
+            />
           </div>
+          
           <div class="form__group">
             <label class="form__label" for="email">Email</label>
             <input
               class="form__input"
               id="email"
+              name="email"
               type="email"
               placeholder="Entrez votre email"
+              required
             />
           </div>
+          
           <div class="form__group">
             <label class="form__label" for="password">Password</label>
             <input
               class="form__input"
               id="password"
+              name="password"
               type="password"
               placeholder="Entrez votre mot de passe"
+              required
             />
           </div>
+          
           <label class="form__checkbox-wrapper">
-            <input class="form__checkbox" type="checkbox" id="age" />
+            <input class="form__checkbox" type="checkbox" id="age" name="age" required />
             <span class="form__checkbox-label"></span>
             <span class="form__checkbox-tooltip">Les membres et les organisateurs Linkup doivent avoir au moins 18 ans.</span>
             J'ai 18 ans ou plus
           </label>
+
+          <button class="form__submit" type="submit">S'inscrire</button>
+        </form>
       </main>
 
     <!-- Footer inscription -->

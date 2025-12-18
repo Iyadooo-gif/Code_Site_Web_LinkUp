@@ -38,6 +38,15 @@
             <li class="nav__item">
               <a class="nav__link" href="index.html#contact">Contact</a>
             </li>
+            <li class="nav__item">
+              <a class="nav__link" href="notifications.html">Notifications</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="profil.html">Profil</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="settings.html">Réglages</a>
+            </li>
           </ul>
 
           <div class="navbar__actions">
@@ -50,14 +59,18 @@
     <main class="main">
       <section class="login">
         <h1 class="auth__title">Se connecter</h1>
-        <form class="form">
+        <!-- Remplacez uniquement la section <form> dans login.html -->
+
+        <form class="form" method="POST" action="process_login.php">
           <div class="form__group">
             <label class="form__label" for="email">Email</label>
             <input
               class="form__input"
               id="email"
+              name="email"
               type="email"
               placeholder="Entrez votre email"
+              required
             />
           </div>
 
@@ -66,14 +79,21 @@
             <input
               class="form__input"
               id="password"
+              name="password"
               type="password"
               placeholder="Entrez votre mot de passe"
+              required
             />
           </div>
 
           <label class="form__checkbox-wrapper">
             Se souvenir de moi
-            <input class="form__checkbox" type="checkbox" id="remember" />
+            <input
+              class="form__checkbox"
+              type="checkbox"
+              id="remember"
+              name="remember"
+            />
             <span class="form__checkbox-label"></span>
           </label>
 
@@ -81,7 +101,6 @@
 
           <button class="form__submit" type="submit">Se connecter</button>
         </form>
-
         <p class="auth__footer">
           Créer votre compte?
           <a class="auth__footer-link" href="./inscription.html">S'inscrire</a>
