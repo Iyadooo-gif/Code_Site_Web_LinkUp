@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messagerie Cours</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="user-info">
+                <span id="username-display">Invité</span>
+            </div>
+
+            <h3>Cours disponibles</h3>
+            <div id="courses-list"></div>
+        </div>
+
+        <!-- Chatbox centrale -->
+        <div class="chat-container">
+            <div class="chat-header">
+                <h2 id="course-name">Sélectionnez un cours</h2>
+            </div>
+            <div class="messages-container" id="messages"></div>
+            <div class="message-input-container">
+                <input
+                    type="text"
+                    id="message-input"
+                    placeholder="Tapez votre message..."
+                >
+                <button onclick="sendMessage()">Envoyer</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
