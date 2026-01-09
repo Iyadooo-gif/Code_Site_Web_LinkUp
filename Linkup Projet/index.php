@@ -1,3 +1,4 @@
+<?php require_once 'config.php'; ?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -7,55 +8,7 @@
     <link rel="stylesheet" href="css/main2.css" />
   </head>
   <body>
-    <header class="header">
-      <nav class="navbar" aria-label="Main navigation">
-        <div class="navbar__container">
-          <a class="logo" href="index.html">
-            <div class="logo__icon">
-              <img src="images/logo.png" alt="LinkUp Logo" />
-            </div>
-          </a>
-          <button
-            class="mobile-menu"
-            aria-expanded="false"
-            aria-label="Toggle menu"
-          >
-            <span class="mobile-menu__bar"></span>
-            <span class="mobile-menu__bar"></span>
-            <span class="mobile-menu__bar"></span>
-          </button>
-
-          <ul class="nav" role="menubar">
-            <li class="nav__item">
-              <a class="nav__link nav__link--active" href="#hero">Accueil</a>
-            </li>
-            <li class="nav__item">
-              <a class="nav__link" href="#categories">Catégories</a>
-            </li>
-            <li class="nav__item">
-              <a class="nav__link" href="#activities">Activités</a>
-            </li>
-            <li class="nav__item">
-              <a class="nav__link" href="#contact">Contact</a>
-            </li>
-            <li class="nav__item">
-              <a class="nav__link" href="notifications.html">Notifications</a>
-            </li>
-            <li class="nav__item">
-              <a class="nav__link" href="profil.html">Profil</a>
-            </li>
-            <li class="nav__item">
-              <a class="nav__link" href="settings.html">Préférences</a>
-            </li>
-          </ul>
-
-          <div class="navbar__actions">
-            <a class="btn btn--secondary" href="login.html">Se connecter</a>
-          </div>
-        </div>
-      </nav>
-    </header>
-
+    <?php include 'header.php'; ?>
     <!-- Hero Section -->
     <section id="hero" class="hero">
       <div class="hero__carousel" aria-hidden="true">
@@ -160,40 +113,13 @@
         <button
           class="btn btn--secondary"
           type="button"
-          onclick="window.location.href='create-activity.html'"
+          onclick="window.location.href='create-activity.php'"
         >
           Créer une Activité
         </button>
       </div>
     </section>
 
-    <footer class="footer">
-      <div class="footer__content">
-        <div class="footer__wrapper">
-          <div class="footer__section">
-            <h4 class="footer__section-title">LinkUp</h4>
-            <p class="footer__description">
-              Partagez et découvrez des activités proches de vous.
-            </p>
-          </div>
-          <div class="footer__section">
-            <h4 class="footer__section-title">Liens</h4>
-            <ul class="footer__list">
-              <li class="footer__item">
-                <a class="footer__link" href="#categories">Catégories</a>
-              </li>
-              <li class="footer__item">
-                <a class="footer__link" href="#activities">Activités</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        © <span id="year"></span> LinkUp — Tous droits réservés
-      </div>
-    </footer>
-
-    <script src="js/login.js"></script>
+    <?php include 'footer.php'; ?>
   </body>
 </html>
