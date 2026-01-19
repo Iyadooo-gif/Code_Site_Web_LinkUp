@@ -104,8 +104,13 @@ CREATE TABLE IF NOT EXISTS activite (
     description TEXT,
     image_couverture VARCHAR(255) DEFAULT 'assets/img/default_activity.jpg',
     date_heure DATETIME NOT NULL,
+    duree VARCHAR(50),
     lieu VARCHAR(255),
     nb_place INT,
+    equipements TEXT,
+    niveau VARCHAR(50),
+    prix DECIMAL(10,2) DEFAULT 0,
+    acces_info TEXT,
     condition_participation TEXT,
     statut ENUM('ouvert', 'complet', 'annule') DEFAULT 'ouvert',
     visibilite ENUM('public', 'prive', 'amis') DEFAULT 'public',
@@ -298,4 +303,3 @@ INSERT IGNORE INTO type_activite (nom_du_type, description) VALUES
 ('sport', 'Activités physiques et sportives'),
 ('art', 'Expositions, ateliers et sorties culturelles'),
 ('nature', 'Randonnées et activités de plein air');
-
