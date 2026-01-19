@@ -4,7 +4,7 @@
 session_start();
 
 $host = 'localhost';
-$dbname = 'LinkUpDB';
+$dbname = 'linkup_db';
 $user = 'root';
 $pass = '';
 

@@ -58,7 +58,7 @@ require_once 'config.php';
             <span class="form__checkbox-label"></span>
           </label>
 
-          <a class="form__link" href="#">Mot de passe oublié?</a>
+          <a class="form__link" href="./forgot-password.php">Mot de passe oublié?</a>
 
           <button class="form__submit" type="submit">Se connecter</button>
         </form>

@@ -77,7 +77,7 @@ require_once 'config.php';
         </p>
       </section>
     </main>
-    <?php include 'header.php'; ?>
+    <?php include 'footer.php'; ?>
     <script src="js/script.js"></script>
     <script src="js/passwordvisibility.js"></script>
   </body>
