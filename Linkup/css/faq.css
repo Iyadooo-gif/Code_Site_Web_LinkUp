@@ -1,0 +1,15 @@
+.faq-item {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--bg-light);
+  padding-bottom: 1rem;
+}
+.faq-question {
+  font-weight: 600;
+  color: var(--primary-dark);
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+.faq-answer {
+  color: var(--text-gray);
+  line-height: 1.6;
+}
